@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/useRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-import blogRoutes from './routes/blogRoutes.js';
+import blogRoutes from "./routes/blogRoutes.js";
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -17,7 +17,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "*",
     credentials: true,
   })
 );
@@ -43,6 +43,6 @@ app.use("/api/v1", orderRoutes);
 app.use("/api/v1", blogRoutes);
 
 // Start the server
-app.listen(port, '0.0.0.0',() => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server is running on Port no ${port}`);
 });

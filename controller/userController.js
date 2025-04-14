@@ -220,7 +220,12 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
 
     const token = user.generateToken();
-    res.cookie("token", token, { httpOnly: true, maxAge: 60 * 60 * 1000 });
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 60 * 60 * 1000, // 1 hour
+      sameSite: "None", // IMPORTANT: Must be 'None' for cross-site cookies
+      secure: true, // REQUIRED if sameSite is 'None'
+    });
 
     res.status(200).json({ message: "Login successful", user });
   } catch (error) {

@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Backend is running...");
+  res.send("Backend is running Hello Khushkhabriii...");
 });
 
 // Database Connection
@@ -43,6 +43,6 @@ app.use("/api/v1", orderRoutes);
 app.use("/api/v1", blogRoutes);
 
 // Start the server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0',() => {
   console.log(`Server is running on Port no ${port}`);
 });
